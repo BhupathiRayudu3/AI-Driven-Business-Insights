@@ -1,0 +1,3 @@
+'bed_bath_table', 'garden_tools', 'consoles_games',
+       'health_beauty', 'cool_stuff', 'perfumery',
+       'computers_accessories', 'watches_gifts', 'furniture_decor'

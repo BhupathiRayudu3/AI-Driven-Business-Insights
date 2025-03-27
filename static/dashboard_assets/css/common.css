@@ -1,0 +1,75 @@
+.login_btn, .signup_btn {
+    background-color: dodgerblue  ;
+    color: white;
+    width:174px
+}
+
+.logout_btn{
+    background-color: rgb(217, 37, 94)  ;
+    color: white;
+    width:174px
+}
+.login_btn:hover, .signup_btn:hover ,.logout_btn:hover{
+    background-color: rgb(67, 202, 52) !important;
+
+}
+
+select.form-select.department, select.form-select.gender {
+    height: 34px ; 
+    margin-top: 10px;
+    width: 58%;
+}
+
+.input-group.select_div{
+    margin-top:20px
+}
+
+.login-page .page-header .container {
+    padding-top: 22vh;
+}
+
+.complaints_card{
+    padding: 10px;
+    cursor: pointer;
+}
+.complaints_card p{
+    color: black;
+}
+
+.complaints_card:hover{
+    background-color: rgb(235, 237, 237);
+}
+
+.solved_btn, .submit_btn{
+    width: 70px;
+    color:white;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+select.view_access {
+    width: 133px;
+    height: 30px;
+    background: burlywood;
+    border-radius: 5px;
+}
+
+.comment_area{
+    border-radius: 5px;
+}
+
+.bottom_btns {
+    width: 108px;
+    padding: 8px !important;
+}
+
+.bottom_btns_div {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.nav_btn{
+    float: right;
+}

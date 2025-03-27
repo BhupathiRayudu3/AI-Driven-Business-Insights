@@ -1,0 +1,2 @@
+Health and beauty', 'Sports and travel', 'Electronic accessories',
+       'Food and beverages', 'Fashion accessories', 'Home and lifestyle

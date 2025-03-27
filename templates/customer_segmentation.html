@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Inputs | Customer Segmentation</title>
+		<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+		<link rel="icon" href="/static/image-asset/icons/favicon.ico" type="image/x-icon"/>
+		<!-- Fonts and icons -->
+		<script src="/static/dashboard_assets/js/plugin/webfont/webfont.min.js"></script>
+		 
+		 
+
+ 
+		<script>
+			WebFont.load({
+				google: {"families":["Lato:300,400,700,900"]},
+				custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/static/dashboard_assets/css/fonts.min.css']},
+				active: function() {
+					sessionStorage.fonts = true;
+				}
+			});
+		</script>
+		<style>
+			/* Container needed to position the button. Adjust the width as needed */
+			.container {
+				position: relative;
+				width: 50%;
+			}
+
+			/* Make the image responsive */
+			.container img {
+				width: 100%;
+				height: auto;
+			}
+
+			/* Style the button and place it in the middle of the container/image */
+			.container .btn {
+				position: absolute;
+				top: 65%;
+				left: 40%;
+				transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				background-color: #555;
+				color: white;
+				font-size: 10px;
+				padding: 4px 8px;
+				border: none;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+
+			.btn {
+				min-width: 200px;
+			}
+
+			.btn:hover {
+				background-color: black;
+				color: white;
+			}
+			/* Add some basic styling */
+			 
+			.images_row img {
+				height: 125px;
+				border-radius: 10px;
+				box-shadow: 3px 3px 3px;
+				margin: auto;
+				display: block;
+			}
+
+			#dashboard_hr{
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+			
+		</style>
+		<!-- CSS Files -->
+		<link rel="stylesheet" href="/static/dashboard_assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/dashboard_assets/css/atlantis.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+		<!-- CSS Just for demo purpose, don't include it in your project -->
+		<link rel="stylesheet" href="/static/dashboard_assets/css/demo.css">
+		<link rel="stylesheet" href="../static/css/common.css">
+	</head>
+<body>
+	<div class="wrapper">
+		{% set sidefocus = 2 %} 
+		<!-- This Sets the Focus of Sidebar, See sidebar.html -->
+
+		<!-- Sidebar -->
+		{% include "sidebar.html" ignore missing %}
+		<!-- End Sidebar -->
+		<div class="page-inner">
+
+			<h1><b> Customer Segmentation </b></h1>
+			<hr>
+			<form action="/customer_segmentation_result" method="post">
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<select name="title" id="title" class="form-control" required>
+							<option value="">Select Title</option>
+							<option value="Honorable">Honorable</option>
+							<option value="Mr">Mr</option>
+							<option value="Mrs">Mrs</option>
+							<option value="Rev">Rev</option>
+							<option value="Dr">Dr</option>
+							<option value="Ms">Ms</option>
+						</select>
+					</div> 
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<select name="gender" id="gender" class="form-control" required>
+							<option value="">Select Gender</option>
+							<option value="Agender">Agender</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+							<option value="Non-binary">Non-binary</option>
+							<option value="Polygender">Polygender</option>
+							<option value="Genderqueer">Genderqueer</option>
+							<option value="Genderfluid">Genderfluid</option>
+							<option value="Bigender">Bigender</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<select name="country" id="country" class="form-control" required>
+							<option value="">Select Country</option>
+							<option value="Zambia">Zambia</option>
+							<option value="Peru">Peru</option>
+							<option value="China">China</option>
+							<option value="Thailand">Thailand</option>
+							<option value="Brazil">Brazil</option>
+							<option value="Zimbabwe">Zimbabwe</option>
+							<option value="Indonesia">Indonesia</option>
+							<option value="Albania">Albania</option>
+							<option value="Ukraine">Ukraine</option>
+							<option value="Greece">Greece</option>
+							<option value="Poland">Poland</option>
+							<option value="Croatia">Croatia</option>
+							<option value="Portugal">Portugal</option>
+							<option value="Philippines">Philippines</option>
+							<option value="Argentina">Argentina</option>
+							<option value="Pakistan">Pakistan</option>
+							<option value="United States">United States</option>
+							<option value="Slovenia">Slovenia</option>
+							<option value="Norway">Norway</option>
+							<option value="South Africa">South Africa</option>
+							<option value="Russia">Russia</option>
+							<option value="Vietnam">Vietnam</option>
+							<option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+							<option value="Cuba">Cuba</option>
+							<option value="Botswana">Botswana</option>
+							<option value="Myanmar">Myanmar</option>
+							<option value="Japan">Japan</option>
+							<option value="Egypt">Egypt</option>
+							<option value="Sweden">Sweden</option>
+							<option value="Georgia">Georgia</option>
+							<option value="Macedonia">Macedonia</option>
+							<option value="Mexico">Mexico</option>
+							<option value="France">France</option>
+							<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+							<option value="Sri Lanka">Sri Lanka</option>
+							<option value="Belarus">Belarus</option>
+							<option value="Guatemala">Guatemala</option>
+							<option value="Honduras">Honduras</option>
+							<option value="Bulgaria">Bulgaria</option>
+							<option value="Afghanistan">Afghanistan</option>
+							<option value="Papua New Guinea">Papua New Guinea</option>
+							<option value="Czech Republic">Czech Republic</option>
+							<option value="Canada">Canada</option>
+							<option value="Serbia">Serbia</option>
+							<option value="Bolivia">Bolivia</option>
+							<option value="Kazakhstan">Kazakhstan</option>
+							<option value="Ivory Coast">Ivory Coast</option>
+							<option value="North Korea">North Korea</option>
+							<option value="Venezuela">Venezuela</option>
+							<option value="Benin">Benin</option>
+							<option value="Finland">Finland</option>
+							<option value="Iran">Iran</option>
+							<option value="San Marino">San Marino</option>
+							<option value="Tunisia">Tunisia</option>
+							<option value="Uganda">Uganda</option>
+							<option value="Ireland">Ireland</option>
+							<option value="Djibouti">Djibouti</option>
+							<option value="Colombia">Colombia</option>
+							<option value="Netherlands">Netherlands</option>
+							<option value="Chad">Chad</option>
+							<option value="Malaysia">Malaysia</option>
+							<option value="Panama">Panama</option>
+							<option value="Spain">Spain</option>
+							<option value="Switzerland">Switzerland</option>
+							<option value="Dominican Republic">Dominican Republic</option>
+							<option value="New Zealand">New Zealand</option>
+							<option value="Palau">Palau</option>
+							<option value="Nigeria">Nigeria</option>
+							<option value="Saudi Arabia">Saudi Arabia</option>
+							<option value="Nicaragua">Nicaragua</option>
+							<option value="Palestinian Territory">Palestinian Territory</option>
+							<option value="Kenya">Kenya</option>
+							<option value="Chile">Chile</option>
+							<option value="Costa Rica">Costa Rica</option>
+							<option value="Liechtenstein">Liechtenstein</option>
+							<option value="Tanzania">Tanzania</option>
+							<option value="Qatar">Qatar</option>
+							<option value="El Salvador">El Salvador</option>
+							<option value="Estonia">Estonia</option>
+							<option value="Hungary">Hungary</option>
+							<option value="Bangladesh">Bangladesh</option>
+							<option value="Madagascar">Madagascar</option>
+							<option value="Nepal">Nepal</option>
+							<option value="Angola">Angola</option>
+							<option value="Lithuania">Lithuania</option>
+							<option value="Luxembourg">Luxembourg</option>
+							<option value="Comoros">Comoros</option>
+							<option value="Armenia">Armenia</option>
+							<option value="Mongolia">Mongolia</option>
+							<option value="Kyrgyzstan">Kyrgyzstan</option>
+							<option value="Kosovo">Kosovo</option>
+							<option value="Gambia">Gambia</option>
+							<option value="Syria">Syria</option>
+							<option value="Latvia">Latvia</option>
+							<option value="Australia">Australia</option>
+							<option value="Yemen">Yemen</option>
+							<option value="Mauritania">Mauritania</option>
+							<option value="Equatorial Guinea">Equatorial Guinea</option>
+							<option value="Ethiopia">Ethiopia</option>
+							<option value="Uzbekistan">Uzbekistan</option>
+							<option value="Senegal">Senegal</option>
+							<option value="Cameroon">Cameroon</option>
+							<option value="Malawi">Malawi</option>
+							<option value="Sao Tome and Principe">Sao Tome and Principe</option>
+							<option value="Jordan">Jordan</option>
+							<option value="Cyprus">Cyprus</option>
+							<option value="South Korea">South Korea</option>
+							<option value="Mauritius">Mauritius</option>
+							<option value="Paraguay">Paraguay</option>
+							<option value="Macao">Macao</option>
+							<option value="Turkmenistan">Turkmenistan</option>
+							<option value="Faroe Islands">Faroe Islands</option>
+							<option value="Burkina Faso">Burkina Faso</option>
+							<option value="Israel">Israel</option>
+							<option value="United Arab Emirates">United Arab Emirates</option>
+							<option value="Kiribati">Kiribati</option>
+							<option value="Swaziland">Swaziland</option>
+							<option value="Morocco">Morocco</option>
+							<option value="Lesotho">Lesotho</option>
+							<option value="Denmark">Denmark</option>
+							<option value="East Timor">East Timor</option>
+							<option value="Azerbaijan">Azerbaijan</option>
+							<option value="Ecuador">Ecuador</option>
+							<option value="Haiti">Haiti</option>
+							<option value="Moldova">Moldova</option>
+							<option value="United Kingdom">United Kingdom</option>
+							<option value="Togo">Togo</option>
+							<option value="Lebanon">Lebanon</option>
+							<option value="Tajikistan">Tajikistan</option>
+							<option value="Germany">Germany</option>
+							<option value="Slovakia">Slovakia</option>
+							<option value="Italy">Italy</option>
+							<option value="Austria">Austria</option>
+							<option value="Malta">Malta</option>
+							<option value="Hong Kong">Hong Kong</option>
+							<option value="Sierra Leone">Sierra Leone</option>
+							<option value="Guinea">Guinea</option>
+							<option value="Barbados">Barbados</option>
+							<option value="Saint Lucia">Saint Lucia</option>
+							<option value="Rwanda">Rwanda</option>
+							<option value="Niger">Niger</option>
+							<option value="Gabon">Gabon</option>
+							<option value="Taiwan">Taiwan</option>
+							<option value="Uruguay">Uruguay</option>
+							<option value="Romania">Romania</option>
+							<option value="Jamaica">Jamaica</option>
+							<option value="Bahamas">Bahamas</option>
+							<option value="Iraq">Iraq</option>
+							<option value="Aruba">Aruba</option>
+							<option value="Oman">Oman</option>
+							<option value="Aland Islands">Aland Islands</option>
+							<option value="French Southern Territories">French Southern Territories</option>
+							<option value="Burundi">Burundi</option>
+							<option value="Somalia">Somalia</option>
+							<option value="Laos">Laos</option>
+							<option value="Martinique">Martinique</option>
+							<option value="Central African Republic">Central African Republic</option>
+							<option value="French Polynesia">French Polynesia</option>
+							<option value="Iceland">Iceland</option>
+							<option value="Belgium">Belgium</option>
+							<option value="Antigua and Barbuda">Antigua and Barbuda</option>
+							<option value="Cambodia">Cambodia</option>
+							<option value="Bahrain">Bahrain</option>
+							<option value="Ghana">Ghana</option>
+							<option value="Solomon Islands">Solomon Islands</option>
+							<option value="Namibia">Namibia</option>
+							<option value="Mayotte">Mayotte</option>
+							<option value="Republic of the Congo">Republic of the Congo</option>
+							<option value="Liberia">Liberia</option>
+							<option value="Libya">Libya</option>
+							<option value="Maldives">Maldives</option>
+							<option value="Guadeloupe">Guadeloupe</option>
+							<option value="Dominica">Dominica</option>
+							<option value="Sudan">Sudan</option>
+							<option value="Reunion">Reunion</option>
+							<option value="Mali">Mali</option>
+							<option value="Samoa">Samoa</option>
+							<option value="Bhutan">Bhutan</option>
+							<option value="New Caledonia">New Caledonia</option>
+							<option value="Turkey">Turkey</option>
+							<option value="Puerto Rico">Puerto Rico</option>
+							<option value="Eritrea">Eritrea</option>
+							<option value="Pitcairn">Pitcairn</option>
+							<option value="Fiji">Fiji</option>
+							<option value="Guyana">Guyana</option>
+							<option value="Seychelles">Seychelles</option>
+							<option value="Cape Verde">Cape Verde</option>
+							<option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+							<option value="Kuwait">Kuwait</option>
+							<option value="Mozambique">Mozambique</option>
+							<option value="Suriname">Suriname</option>
+							<option value="South Sudan">South Sudan</option>
+							<option value="Brunei">Brunei</option>
+							<option value="Cayman Islands">Cayman Islands</option>
+							<option value="Montenegro">Montenegro</option>
+							<option value="Belize">Belize</option>
+							<option value="Saint Helena">Saint Helena</option>
+							<option value="American Samoa">American Samoa</option>
+							<option value="Tuvalu">Tuvalu</option>
+							<option value="Vanuatu">Vanuatu</option>
+							<option value="Nauru">Nauru</option>
+							<option value="Anguilla">Anguilla</option>
+							<option value="Guinea-Bissau">Guinea-Bissau</option>
+							<option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+							<option value="Micronesia">Micronesia</option>
+							<option value="Andorra">Andorra</option>
+							<option value="Tonga">Tonga</option>
+							<option value="Bonaire, Saint Eustatius and Saba">Bonaire, Saint Eustatius and Saba</option>
+							<option value="Greenland">Greenland</option>
+							<option value="Marshall Islands">Marshall Islands</option>
+							<option value="Northern Mariana Islands">Northern Mariana Islands</option>
+							<option value="Guam">Guam</option>
+							<option value="Isle of Man">Isle of Man</option>
+							<option value="Falkland Islands">Falkland Islands</option>
+							<option value="Trinidad and Tobago">Trinidad and Tobago</option>
+							<option value="Algeria">Algeria</option>
+							<option value="Western Sahara">Western Sahara</option>
+							<option value="Bermuda">Bermuda</option>
+							<option value="Cocos Islands">Cocos Islands</option>
+							<option value="Curacao">Curacao</option>
+							<option value="French Guiana">French Guiana</option>
+							<option value="Niue">Niue</option>
+							<option value="Monaco">Monaco</option>
+							<option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+							<option value="Sint Maarten">Sint Maarten</option>
+							<option value="India">India</option>
+							<option value="Grenada">Grenada</option>
+							<option value="Wallis and Futuna">Wallis and Futuna</option>
+							<option value="Saint Martin">Saint Martin</option>
+							<option value="Christmas Island">Christmas Island</option>
+							<option value="Montserrat">Montserrat</option>
+							<option value="Norfolk Island">Norfolk Island</option>
+							<option value="U.S. Virgin Islands">U.S. Virgin Islands</option>
+							<option value="Jersey">Jersey</option>
+							<option value="Cook Islands">Cook Islands</option>
+						</select>
+					</div> 
+				</div>
+				
+				<div class="row mt-2">
+					<div class="col-md-3">
+					  <input type="text" name="latitude" class="form-control" placeholder="Latitude"  value="" required>
+					</div> 
+				</div>
+
+				<div class="row mt-2">
+					<div class="col-md-3">
+					  <input type="text" name="longitude" class="form-control" placeholder="Longitude"  value="" required>
+					</div> 
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<select name="department" id="department" class="form-control" required>
+							<option value="">Select Department</option>
+							<option value="Support">Support</option>
+							<option value="Sales">Sales</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Marketing">Marketing</option>
+							<option value="Human Resources">Human Resources</option>
+							<option value="Accounting">Accounting</option>
+							<option value="Services">Services</option>
+							<option value="Business Development">Business Development</option>
+							<option value="Product Management">Product Management</option>
+							<option value="Legal">Legal</option>
+							<option value="Research and Development">Research and Development</option>
+							<option value="Training">Training</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<select name="job_title" id="job_title" class="form-control" required>
+							<option value="">Select Job Title</option>
+							<option value="Account Coordinator">Account Coordinator</option>
+							<option value="Account Executive">Account Executive</option>
+							<option value="Account Representative I">Account Representative I</option>
+							<option value="Account Representative II">Account Representative II</option>
+							<option value="Account Representative III">Account Representative III</option>
+							<option value="Account Representative IV">Account Representative IV</option>
+							<option value="Accountant I">Accountant I</option>
+							<option value="Accountant II">Accountant II</option>
+							<option value="Accountant III">Accountant III</option>
+							<option value="Accountant IV">Accountant IV</option>
+							<option value="Accounting Assistant I">Accounting Assistant I</option>
+							<option value="Accounting Assistant II">Accounting Assistant II</option>
+							<option value="Accounting Assistant III">Accounting Assistant III</option>
+							<option value="Accounting Assistant IV">Accounting Assistant IV</option>
+							<option value="Actuary">Actuary</option>
+							<option value="Administrator Assistant I">Administrator Assistant I</option>
+							<option value="Administrator Assistant II">Administrator Assistant II</option>
+							<option value="Administrator Assistant III">Administrator Assistant III</option>
+							<option value="Administrator Assistant IV">Administrator Assistant IV</option>
+							<option value="Analyst Programmer">Analyst Programmer</option>
+							<option value="Analyst Programmer II">Analyst Programmer II</option>
+							<option value="Assistant Manager">Assistant Manager</option>
+							<option value="Assistant Media Planner">Assistant Media Planner</option>
+							<option value="Assistant Professor">Assistant Professor</option>
+							<option value="Assistant Secretary">Assistant Secretary</option>
+							<option value="Biostatistician I">Biostatistician I</option>
+							<option value="Biostatistician II">Biostatistician II</option>
+							<option value="Biostatistician III">Biostatistician III</option>
+							<option value="Biostatistician IV">Biostatistician IV</option>
+							<option value="Budget/Accounting Analyst I">Budget/Accounting Analyst I</option>
+							<option value="Budget/Accounting Analyst II">Budget/Accounting Analyst II</option>
+							<option value="Budget/Accounting Analyst III">Budget/Accounting Analyst III</option>
+							<option value="Budget/Accounting Analyst IV">Budget/Accounting Analyst IV</option>
+							<option value="Business Systems Development Analyst">Business Systems Development Analyst</option>
+							<option value="Chemical Engineer">Chemical Engineer</option>
+							<option value="Chief Design Engineer">Chief Design Engineer</option>
+							<option value="Clinical Specialist">Clinical Specialist</option>
+							<option value="Community Outreach Specialist">Community Outreach Specialist</option>
+							<option value="Compensation Analyst">Compensation Analyst</option>
+							<option value="Computer Systems Analyst I">Computer Systems Analyst I</option>
+							<option value="Computer Systems Analyst II">Computer Systems Analyst II</option>
+							<option value="Computer Systems Analyst III">Computer Systems Analyst III</option>
+							<option value="Computer Systems Analyst IV">Computer Systems Analyst IV</option>
+							<option value="Cost Accountant">Cost Accountant</option>
+							<option value="Database Administrator I">Database Administrator I</option>
+							<option value="Database Administrator II">Database Administrator II</option>
+							<option value="Database Administrator III">Database Administrator III</option>
+							<option value="Database Administrator IV">Database Administrator IV</option>
+							<option value="Data Coordinator">Data Coordinator</option>
+							<option value="Dental Hygienist">Dental Hygienist</option>
+							<option value="Designer Engineer">Designer Engineer</option>
+							<option value="Developer I">Developer I</option>
+							<option value="Developer II">Developer II</option>
+							<option value="Developer III">Developer III</option>
+							<option value="Developer IV">Developer IV</option>
+							<option value="Director of Sales">Director of Sales</option>
+							<option value="Electrical Engineer">Electrical Engineer</option>
+							<option value="Editor">Editor</option>
+							<option value="Environmental Specialist">Environmental Specialist</option>
+							<option value="Environmental Tech">Environmental Tech</option>
+							<option value="Executive Secretary">Executive Secretary</option>
+							<option value="Financial Advisor">Financial Advisor</option>
+							<option value="Financial Analyst">Financial Analyst</option>
+							<option value="Food Chemist">Food Chemist</option>
+							<option value="Geologist I">Geologist I</option>
+							<option value="Geologist II">Geologist II</option>
+							<option value="Geologist III">Geologist III</option>
+							<option value="Geologist IV">Geologist IV</option>
+							<option value="Graphic Designer">Graphic Designer</option>
+							<option value="Help Desk Operator">Help Desk Operator</option>
+							<option value="Help Desk Technician">Help Desk Technician</option>
+							<option value="Health Coach I">Health Coach I</option>
+							<option value="Health Coach II">Health Coach II</option>
+							<option value="Health Coach III">Health Coach III</option>
+							<option value="Health Coach IV">Health Coach IV</option>
+							<option value="Human Resources Assistant I">Human Resources Assistant I</option>
+							<option value="Human Resources Assistant II">Human Resources Assistant II</option>
+							<option value="Human Resources Assistant III">Human Resources Assistant III</option>
+							<option value="Human Resources Assistant IV">Human Resources Assistant IV</option>
+							<option value="Human Resources Manager">Human Resources Manager</option>
+							<option value="Information Systems Manager">Information Systems Manager</option>
+							<option value="Internal Auditor">Internal Auditor</option>
+							<option value="Junior Executive">Junior Executive</option>
+							<option value="Legal Assistant">Legal Assistant</option>
+							<option value="Librarian">Librarian</option>
+							<option value="Machine Learning Engineer">Machine Learning Engineer</option>
+							<option value="Mechanical Systems Engineer">Mechanical Systems Engineer</option>
+							<option value="Media Manager I">Media Manager I</option>
+							<option value="Media Manager II">Media Manager II</option>
+							<option value="Media Manager III">Media Manager III</option>
+							<option value="Media Manager IV">Media Manager IV</option>
+							<option value="Nurse">Nurse</option>
+							<option value="Nurse Practitioner">Nurse Practitioner</option>
+							<option value="Occupational Therapist">Occupational Therapist</option>
+							<option value="Operator">Operator</option>
+							<option value="Paralegal">Paralegal</option>
+							<option value="Pharmacist">Pharmacist</option>
+							<option value="Physical Therapy Assistant">Physical Therapy Assistant</option>
+							<option value="Programmer I">Programmer I</option>
+							<option value="Programmer II">Programmer II</option>
+							<option value="Programmer III">Programmer III</option>
+							<option value="Programmer IV">Programmer IV</option>
+							<option value="Programmer Analyst I">Programmer Analyst I</option>
+							<option value="Programmer Analyst II">Programmer Analyst II</option>
+							<option value="Programmer Analyst III">Programmer Analyst III</option>
+							<option value="Programmer Analyst IV">Programmer Analyst IV</option>
+							<option value="Project Manager">Project Manager</option>
+							<option value="Quality Control Specialist">Quality Control Specialist</option>
+							<option value="Quality Engineer">Quality Engineer</option>
+							<option value="Recruiting Manager">Recruiting Manager</option>
+							<option value="Recruiter">Recruiter</option>
+							<option value="Registered Nurse">Registered Nurse</option>
+							<option value="Research Assistant I">Research Assistant I</option>
+							<option value="Research Assistant II">Research Assistant II</option>
+							<option value="Research Assistant III">Research Assistant III</option>
+							<option value="Research Assistant IV">Research Assistant IV</option>
+							<option value="Research Associate">Research Associate</option>
+							<option value="Safety Technician I">Safety Technician I</option>
+							<option value="Safety Technician II">Safety Technician II</option>
+							<option value="Safety Technician III">Safety Technician III</option>
+							<option value="Safety Technician IV">Safety Technician IV</option>
+							<option value="Senior Cost Accountant">Senior Cost Accountant</option>
+							<option value="Senior Developer">Senior Developer</option>
+							<option value="Senior Editor">Senior Editor</option>
+							<option value="Senior Financial Analyst">Senior Financial Analyst</option>
+							<option value="Senior Quality Engineer">Senior Quality Engineer</option>
+							<option value="Senior Sales Associate">Senior Sales Associate</option>
+							<option value="Software Consultant">Software Consultant</option>
+							<option value="Software Engineer I">Software Engineer I</option>
+							<option value="Software Engineer II">Software Engineer II</option>
+							<option value="Software Engineer III">Software Engineer III</option>
+							<option value="Software Engineer IV">Software Engineer IV</option>
+							<option value="Software Test Engineer I">Software Test Engineer I</option>
+							<option value="Software Test Engineer II">Software Test Engineer II</option>
+							<option value="Software Test Engineer III">Software Test Engineer III</option>
+							<option value="Software Test Engineer IV">Software Test Engineer IV</option>
+							<option value="Speech Pathologist">Speech Pathologist</option>
+							<option value="Structural Engineer">Structural Engineer</option>
+							<option value="Structural Analysis Engineer">Structural Analysis Engineer</option>
+							<option value="Teacher">Teacher</option>
+							<option value="Technical Writer">Technical Writer</option>
+							<option value="Tax Accountant">Tax Accountant</option>
+							<option value="VP Accounting">VP Accounting</option>
+							<option value="VP Marketing">VP Marketing</option>
+							<option value="VP Product Management">VP Product Management</option>
+							<option value="VP Quality Control">VP Quality Control</option>
+							<option value="VP Sales">VP Sales</option>
+							<option value="Web Designer I">Web Designer I</option>
+							<option value="Web Designer II">Web Designer II</option>
+							<option value="Web Designer III">Web Designer III</option>
+							<option value="Web Designer IV">Web Designer IV</option>
+							<option value="Web Developer I">Web Developer I</option>
+							<option value="Web Developer II">Web Developer II</option>
+							<option value="Web Developer III">Web Developer III</option>
+							<option value="Web Developer IV">Web Developer IV</option>
+						</select>
+					</div>
+				</div>
+				
+
+				<div class="row mt-2">
+					<div class="col-md-3">
+						
+						<select name="language" class="form-control" required>
+							<option value="">Select Language</option>
+							<option value="Afrikaans">Afrikaans</option>
+							<option value="Albanian">Albanian</option>
+							<option value="Amharic">Amharic</option>
+							<option value="Arabic">Arabic</option>
+							<option value="Armenian">Armenian</option>
+							<option value="Assamese">Assamese</option>
+							<option value="Aymara">Aymara</option>
+							<option value="Azerbaijani">Azerbaijani</option>
+							<option value="Bengali">Bengali</option>
+							<option value="Bislama">Bislama</option>
+							<option value="Bosnian">Bosnian</option>
+							<option value="Bulgarian">Bulgarian</option>
+							<option value="Burmese">Burmese</option>
+							<option value="Catalan">Catalan</option>
+							<option value="Chinese">Chinese</option>
+							<option value="Croatian">Croatian</option>
+							<option value="Czech">Czech</option>
+							<option value="Danish">Danish</option>
+							<option value="Dari">Dari</option>
+							<option value="Dhivehi">Dhivehi</option>
+							<option value="Dutch">Dutch</option>
+							<option value="English">English</option>
+							<option value="Estonian">Estonian</option>
+							<option value="Filipino">Filipino</option>
+							<option value="Finnish">Finnish</option>
+							<option value="Fijian">Fijian</option>
+							<option value="French">French</option>
+							<option value="Georgian">Georgian</option>
+							<option value="German">German</option>
+							<option value="Greek">Greek</option>
+							<option value="Gujarati">Gujarati</option>
+							<option value="Haitian Creole">Haitian Creole</option>
+							<option value="Hebrew">Hebrew</option>
+							<option value="Hindi">Hindi</option>
+							<option value="Hiri Motu">Hiri Motu</option>
+							<option value="Icelandic">Icelandic</option>
+							<option value="Indonesian">Indonesian</option>
+							<option value="Irish Gaelic">Irish Gaelic</option>
+							<option value="Italian">Italian</option>
+							<option value="Japanese">Japanese</option>
+							<option value="Kannada">Kannada</option>
+							<option value="Kashmiri">Kashmiri</option>
+							<option value="Kazakh">Kazakh</option>
+							<option value="Khmer">Khmer</option>
+							<option value="Korean">Korean</option>
+							<option value="Kurdish">Kurdish</option>
+							<option value="Lao">Lao</option>
+							<option value="Latvian">Latvian</option>
+							<option value="Lithuanian">Lithuanian</option>
+							<option value="Luxembourgish">Luxembourgish</option>
+							<option value="Macedonian">Macedonian</option>
+							<option value="Malagasy">Malagasy</option>
+							<option value="Malay">Malay</option>
+							<option value="Malayalam">Malayalam</option>
+							<option value="Mongolian">Mongolian</option>
+							<option value="Moldovan">Moldovan</option>
+							<option value="Māori">Māori</option>
+							<option value="Marathi">Marathi</option>
+							<option value="Maltese">Maltese</option>
+							<option value="Nepali">Nepali</option>
+							<option value="Ndebele">Ndebele</option>
+							<option value="Northern Sotho">Northern Sotho</option>
+							<option value="Polish">Polish</option>
+							<option value="Persian">Persian</option>
+							<option value="Portuguese">Portuguese</option>
+							<option value="Punjabi">Punjabi</option>
+							<option value="Quechua">Quechua</option>
+							<option value="Romanian">Romanian</option>
+							<option value="Russian">Russian</option>
+							<option value="Swahili">Swahili</option>
+							<option value="Swati">Swati</option>
+							<option value="Swedish">Swedish</option>
+							<option value="Tamil">Tamil</option>
+							<option value="Telugu">Telugu</option>
+							<option value="Tetum">Tetum</option>
+							<option value="Thai">Thai</option>
+							<option value="Tok Pisin">Tok Pisin</option>
+							<option value="Tsonga">Tsonga</option>
+							<option value="Tswana">Tswana</option>
+							<option value="Urdu">Urdu</option>
+							<option value="Yiddish">Yiddish</option>
+							<option value="Zulu">Zulu</option>
+						  </select>
+						
+						</div>
+				</div>
+
+				
+				  
+				 
+				 
+				 
+				 
+				<button type="submit" class="btn btn-primary mt-2">Submit</button>
+
+				
+			  </form>
+
+			 
+			
+			
+		</div>
+	</div>
+						 	
+		
+		{% include "footer.html" ignore missing %}
+ 
+</body>
+</html>
